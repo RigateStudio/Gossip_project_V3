@@ -12,13 +12,15 @@ class SessionsController < ApplicationController
           session[:user_id] = user.id 
             redirect_to root_path
         else
-          flash.now[:danger] = "Le mot de passe ne correspond pas à l'email fourni"
+          flash.now[:danger] = "le mot de passe ne correspond pas à l'email fourni"
           render :new
         end
     end
 
     def destroy
         session.delete(:user_id)
+        redirect_to root_path
+
     end
     
     

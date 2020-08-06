@@ -1,5 +1,5 @@
 class GossipsController < ApplicationController
-  #before_action :authenticate_user, only: [:new, :create]
+  before_action :authenticate_user, only: [:new, :create]
 
   def index
     @gossip = false
@@ -18,19 +18,9 @@ class GossipsController < ApplicationController
     
     @gossip = Gossip.new(title: params["title"], content: params["content"], user: User.find_by(first_name: "anonymous"),)
 
-    #@gossip.user = User.find_by(id: session[:user_id])
+    @gossip.user = current_user
+
     if @gossip.save
-      flash[:success] = "Potin bien créé !"
-      redirect_to root_path
-    else
-      render :new
-    end
-    
-    
-    
-    puts params.keys
-    
-    if @gossip.save # essaie de sauvegarder en base @gossip
       params.keys.each do |key|
         @gossip.tags << Tag.find(params["#{key}"]) if key.tr("0-9", "") == "tag"
       end 
@@ -39,6 +29,8 @@ class GossipsController < ApplicationController
       @tags = Tag.all
       render :new
     end
+    
+    puts params.keys
   end
 
   def show
@@ -79,10 +71,6 @@ class GossipsController < ApplicationController
     end
   end
 
-  def name_of_user(user_name = "")
-    user_name
-  end
-  
 end
 
 

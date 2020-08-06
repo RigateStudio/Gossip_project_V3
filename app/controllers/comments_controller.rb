@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
   end
 
   def update
-    puts @p = params
+    @p = params
     @comment = Comment.find(params[:id])
     if @comment.update(post_params)
       redirect_to gossip_path(params[:gossip_id])

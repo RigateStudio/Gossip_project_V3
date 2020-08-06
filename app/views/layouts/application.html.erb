@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html>
+
     <head>
+
       <title>The Gossip PastequeProject</title>
+
       <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
-      <!--//  \/ligne bootstrap copier depuis le projet de semaine 1 \/-->
+
       <link rel="stylesheet" href="/app/stylesheets/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="shortcut icon" type="image/png" href="/app/assets/images/favicon.png">
+
       <%= stylesheet_link_tag 'application', media: 'all' %>
       <%= javascript_include_tag 'application' %> 
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/js/bootstrap.min.js" integrity="sha384-XEerZL0cuoUbHE4nZReLT7nx9gQrQreJekYhJD9WNWhH8nEW+0c5qq7aIo2Wl30J" crossorigin="anonymous"></script>
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
 
     </head>
+
     <body> 
+
       <header>
+
         <nav class="navbar navbar-expand-lg navbar-success bg-light">
             <img src="https://image.flaticon.com/icons/png/512/123/123250.png" class="img-fluid" alt="Responsive image">
             
@@ -22,50 +27,63 @@
               <%= link_to "The Gossip Project", gossips_path %>
             </div>
     
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-              </button>
-              </ul>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+          </ul>
 
               <div style='display: inline-block; position: relative; float: right;'>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                       
                   <ul class="navbar-nav mr-auto">
-                      <li class="nav-item active">
-                        <div class="nav-link">
-                          <%= link_to "Créer un potin", new_gossip_path %>
-                        </div>
-                      </li>
+                        
+                    <li class="nav-item active">
+                      <div class="nav-link">
+                        <%= link_to "Créer un potin", new_gossip_path %>
+                      </div>
+                    </li>
+                        
+                    <li class="nav-item active">
+                     <div class="nav-link"> <%= link_to "Team", team_path %> </div>
+                    </li>
+                        
+                    <li class="nav-item">
+                      <div class="nav-link"> <%= link_to "Contact", contact_path %></div>
+                    </li>
                       
-                      <li class="nav-item active">
-                        <div class="nav-link"> <%= link_to "Team", team_path %> </div>
-                      </li>
-                      
-                      <li class="nav-item">
-                        <div class="nav-link"> <%= link_to "Contact", contact_path %></div>
-                      </li>
-                                        
-                        <li class="nav-item dropdown">
-                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Bigre de Tigre
-                          </a>
-                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Janvier</a>
-                            <a class="dropdown-item" href="#">Fervier</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Mars</a>
-                          </div>
-                        </li>
-
-                      <form class="form-inline my-2 my-lg-0">
-                        <!-- <li class="nav-item">
-                          <div class="nav-link"> <%= link_to "Connexion", new_session_path %></div>
-                        </li>
-                              
-                        <li class="nav-item">
-                          <div class="nav-link"> <%= link_to "Inscription", new_user_path %></div>
+                    <!-- <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">fichtre</a>
+                          
+                       <% if logged_in?%>
+                          <li class="nav-item">
+                            <%= link_to "Se déconnecter", session_path(session.id), method: :delete %>
+                          </li>
+                       <% else %>
+                         <li class="nav-item">
+                            <%= link_to "Connexion", new_session_path %>
+                          </li>
+                         <li class="nav-item">
+                              <%= link_to "Inscription", new_user_path %>
+                         </li>
+                          <%end%>
                         </li> -->
-                      </form>
+
+                        <form class="form-inline my-2 my-lg-0">
+                          <% if logged_in?%>
+                            <li class="nav-item">
+                              <%= link_to "Se déconnecter", session_path(session.id), method: :delete %>
+                            </li>
+                          <% else %>
+                            <li class="nav-item">
+                              <%= link_to "Connexion ", new_session_path %>
+                            </li>
+                            <li class="nav-item">
+                              <%= link_to "Inscription", new_user_path %>
+                            </li>
+                          <%end%>
+                        </form>
+
                     </ul>
                   </div>
                 </div>
@@ -73,8 +91,6 @@
           </nav>
 
         </header>
-
-    
       <div class="container p-1">
         <%= yield %>
         </div> 
