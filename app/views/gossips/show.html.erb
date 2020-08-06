@@ -21,15 +21,15 @@
         <%end%>
     </p>
 
-    <%like_btn = (link_to ".", gossip_likes_path(@gossip.id),class: "btn btn-secondary" ,method: :post)%>
+    <%like_btn = (link_to "like", gossip_likes_path(@gossip.id), class: "btn btn-secondary", method: :post)%>
 
     <%@gossip.likes.each do |like|%>
         <% if  like.user == current_user%>
-            <%like_btn = (link_to "Like", gossip_like_path(@gossip.id, @gossip.likes.find_by(user: current_user).id),class: "btn btn-success", method: :DELETE)%>
+            <%like_btn = (link_to "déLiker", gossip_like_path(@gossip.id, @gossip.likes.find_by(user: current_user).id),class: "btn btn-success", method: :DELETE)%>
         <% end %>
     <% end %>
 
-    <p>Liker<%=like_btn%></p>
+    <p><%=like_btn%></p>
 
 
 
@@ -63,7 +63,10 @@
 
         <div class="btn btn-light mt-1 mb-3">
             <%= link_to "Editer", edit_gossip_comment_path(@id,comment.id) %>
-
+        </div>
+        <div class="btn btn-light mt-1 mb-3 a-light">
+            <!--<=link_to "Destroy", :controller => :comment, :action => :destroy, :id =>comment.id>-->
+        </div>
     <% end %>
     
     <div class='mt-3'>
