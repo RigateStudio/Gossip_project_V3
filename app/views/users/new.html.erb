@@ -1,0 +1,32 @@
+<div class="container p-2">
+    <h1>Inscription</h1><br/>
+    <h2> Veuillez renseigner les champs ci-dessous afin de créer votre compte. </h2><br/>
+    <% if @user.errors.any? %>
+        <div class="alert alert-danger">
+            <p>Nous n'avons pas réussi à créer votre profil pour la (ou les) raison(s) suivante(s) :</p>
+            <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+        <% end %>
+        <form action= <%= users_path %> method="post" id="userform">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+            <label for="first_name">Prénom:</label></br>
+            <input class="w-50" type="text" name="first_name"><br><br>
+            <label for="last_name">Nom:</label></br>
+            <input class="w-50" type="text" name="last_name"><br><br>
+            <label for="email">Email:</label></br>
+            <input class="w-50" type="text" name="email"><br><br>
+            <label for="password">Password:</label></br>
+            <input class="w-50" type="text" name="password"><br><br>
+            <label for="city">Ville:</label><br>
+            <input class="w-50" type="text" name="city"><br><br>
+            <label for="age"> Age:</label><br>
+            <input class="w-50" type="integer" name="age"><br><br>
+            <label for="description">Une description vous concernant (max 500 caractères):</label><br>
+            <input class="w-50" style="height: 100px" type="text" name="description"><br><br>
+            <input class="mt-1 mb-3 btn btn-success" type="submit" value="Envoyer"></br>
+        </form>
+</div>

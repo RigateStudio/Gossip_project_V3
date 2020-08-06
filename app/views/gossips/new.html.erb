@@ -1,0 +1,32 @@
+<div class="container p-2">
+    <% if @gossip.errors.any? %>
+    <div class="alert alert-danger">
+        <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+        <ul>
+            <% @gossip.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+    <form action= <%= gossips_path %> method="post" id="gossipform">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+        <label for="title">Titre:</label></br>
+        <input class="w-50" type="text" name="title"><br><br>
+        <label for="Content">Contenu:</label></br>
+        <input class="w-100" style="height: 100px" type="text" name="content"><br><br>
+        <input class="mt-1 mb-3 btn btn-success" type="submit" value="Envoyer"></br>
+        <label for="tags">Ajouter un tag</label>
+        <option value="no_tag"></option>
+        <% (@tags.length - 1).times do |x|%>
+            <%tag = Tag.all[x]%>
+            <div class="form-check">
+            <input class="form-check-input" name="tag<%=x%>" type="checkbox" value="<%=tag.id%>" id="<%tag.title%>Check">
+            <label class="form-check-label" for="<%tag.title%>Check">
+                #<%= tag.title %>
+            </label>
+            </div>
+        <%end%>
+        </select>
+    </form>
+</div>

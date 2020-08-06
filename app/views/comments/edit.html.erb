@@ -1,0 +1,24 @@
+<!--COMMENT_EDIT-->
+<div class="container p-2">
+    <% if @comment.errors.any? %>
+    <div class="alert alert-danger">
+        <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+        <ul>
+            <% @comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+    <%= form_for @comment, :url => gossip_comment_path do |f| %>
+        <div class="form_group">
+            <label>Contenu</label>
+            <%= f.text_field :content, class: 'form_control'%>
+        </div>
+
+        <div class="form_group">
+            <button type="submit"> Modifier le commentaire</button>
+        </div>
+    <%end%>
+</div>

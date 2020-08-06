@@ -1,0 +1,16 @@
+<div class="container p-2">
+
+<%id_user=User.find(@id)%>
+<div class='container p-1'>
+<h1> Détails du gossiper </h1>
+
+
+<p><b> Prénom : </b><%=id_user.first_name%> </p>
+<p><b> Nom :</b> <%=id_user.last_name %> </p>
+<p><b> Description: </b><%= id_user.description %>
+<p><b> Email :</b> <%=id_user.email %> </p>
+<p><b> Age : </b><%=id_user.age %> </p>
+<p><b> Ville : </b><%= link_to id_user.city.name, city_path(id_user.city.id) %> </p>
+
+</div>
+</div>

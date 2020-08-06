@@ -1,0 +1,29 @@
+<!--GOSSIP_EDIT-->
+
+<div class="container p-2">
+    <% if @gossip.errors.any? %>
+    <div class="alert alert-danger">
+        <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+        <ul>
+            <% @gossip.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+    <%= form_for @gossip do |f| %>
+        <div class="form_group">
+            <label>Titre de l'article</label>
+            <%= f.text_field :title, class: 'form_control'%>
+        </div>
+        <div class="form_group">
+            <label>Contenu de l'article </label>
+            <%= f.text_field :content, class: 'form_control'%>
+        </div>
+
+        <div class="form_group">
+            <button type="submit"> Modifier le potin</button>
+        </div>
+    <%end%>
+</div>

@@ -1,0 +1,19 @@
+<div class="container p-2">
+    <h1>Connexion</h1><br/>
+    <h2> Veuillez renseigner les champs ci-dessous afin de vous connecter. </h2><br/>
+
+    <% flash.each do |type, msg| %>
+        <div class="alert alert-info">
+          <%= msg %>
+        </div>
+      <% end %>
+
+    <form action= <%= sessions_path %> method="post" id="sessionform">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+        <label for="email">Adresse email:</label></br>
+        <input class="w-50" type="text" name="email"><br><br>
+        <label for="password">Password:</label><br>
+        <input class="w-50" type="text" name="password"><br><br>
+        <input class="mt-1 mb-3 btn btn-success" type="submit" value="Se connecter"></br>
+    </form>
+</div>
