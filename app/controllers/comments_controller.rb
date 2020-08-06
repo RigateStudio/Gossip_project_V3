@@ -4,8 +4,10 @@ class CommentsController < ApplicationController
 
   def create
     puts params
-    Comment.create(content: params["content"], user: User.find_by(first_name: "anonymous"), gossip: Gossip.find(params["gossip_id"]))
-    redirect_to gossip_path(params["gossip_id"])
+    if logged_in?
+      Comment.create(content: params["content"], user: current_user, gossip: Gossip.find(params["gossip_id"]))
+      redirect_to gossip_path(params["gossip_id"])
+    end  
   end
 
   def edit

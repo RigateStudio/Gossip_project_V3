@@ -13,7 +13,8 @@ class UsersController < ApplicationController
             @user.city = City.create(name: params["city"])
         end
         if @user.save
-            redirect_to new_session_path #renvoie vers la page de login
+            log_in(@user)
+            render new_session_path#renvoie vers la page index gossips
         else
             render :new
         end

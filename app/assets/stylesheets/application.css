@@ -26,7 +26,7 @@
     }
 
   body {
-      background-color: white;
+      background-color: #f5f4ed;
       padding: 70px 0px 0px 0px;
       width: 100%;
     }
@@ -34,6 +34,11 @@
   a {
       color: rgb(0, 0, 0)
     }
+
+  a:hover {
+      color: green;
+      
+  }
 
   header {
     position: fixed;
@@ -55,4 +60,24 @@
 
   .flex-box {
     justify-content: flex-end;
+  }
+
+  .container-navbar {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .container-left {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .container-right {
+    display: flex;
+    justify-content: right;
+  }
+
+  .navbar {
+      box-shadow: 0 6px 4px -2px rgba(0,0,0,.2);
   }

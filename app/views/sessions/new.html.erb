@@ -1,12 +1,15 @@
 <div class="container p-2">
-    <h1>Connexion</h1><br/>
-    <h2> Veuillez renseigner les champs ci-dessous afin de vous connecter. </h2><br/>
-
+    <br/>
+    <br/>
+    <br/>
+    <h1>Connexion</h1>
+    <h2> Veuillez renseigner les champs ci-dessous afin de vous connecter. </h2>
+    <br/>
     <% flash.each do |type, msg| %>
         <div class="alert alert-info">
           <%= msg %>
         </div>
-      <% end %>
+    <% end %>
 
     <form action= <%= sessions_path %> method="post" id="sessionform">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">

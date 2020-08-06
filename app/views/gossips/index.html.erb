@@ -4,11 +4,18 @@
         <p>Opération réussie</p>
     </div>
     <% end %>
+    <br/>
+    <br/>
+    <br/>
+    <h1>Bienvenue !</h1><br/>
 
+    <h3 style="text-align: center">they say all rumors are true so... what's your truth?</h3>
+    
+    <br/><br/>
 
-    <h1>Gossips : index</h1>
+    <p style="text-align: right">Sois un.e ami.e de m***e et vends-les sur le net 💩</p>
 
-    <h2>Bienvenue !</h2>
+    <br/><br/><hr><br/><br/>
 
 
     <% Gossip.all.each_with_index do |gossip, index| %>
@@ -20,9 +27,6 @@
             <p>Title: <%= link_to "#{gossip.title}", gossip_path(gossip.id)%></p>
             </div>
         </div>
-        
+        <br/><br/><hr><br/><br/>
     <% end %>
 </div>
-  
-
-

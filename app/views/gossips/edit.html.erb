@@ -3,9 +3,9 @@
 <div class="container p-2">
     <% if @gossip.errors.any? %>
         <div class="alert alert-danger">
-            <p>Nous n'avons pas réussi à créer le potin pour la (ou les) raison(s) suivante(s) :</p>
+            <p>Nous n'avons pas réussi à éditer le potin pour la (ou les) raison(s) suivante(s) :</p>
             <ul>
-                <% @gossip.errors.full_messages.each do |message| %>
+                <% @gossip.errors.full_messages.essach do |message| %>
                     <li><%= message %></li>
                 <% end %>
             </ul>

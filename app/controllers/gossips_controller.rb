@@ -15,7 +15,6 @@ class GossipsController < ApplicationController
     puts params["title"]
     puts params["content"]
   
-    
     @gossip = Gossip.new(title: params["title"], content: params["content"], user: User.find_by(first_name: "anonymous"),)
 
     @gossip.user = current_user
@@ -34,26 +33,32 @@ class GossipsController < ApplicationController
   end
 
   def show
+    @gossip = Gossip.find(params[:id])
     @id = params[:id]
   end
 
   def edit
-    @gossip = Gossip.find(params[:id])
+      @gossip = Gossip.find(params[:id])
+    unless logged_in? && @gossip.user.id == current_user.id
+      redirect_to gossip_path(@gossip.id)
+    end
   end
   
   def update
     puts @p = params
     @gossip = Gossip.find(params[:id])
-    if @gossip.update(post_params)
-      render :index
-    else
-      render :edit
-    end
+      if @gossip.update(post_params)
+        render :index
+      else
+        render :edit
+      end
   end 
 
-  def destroy
-    @gossip = Gossip.find(params[:id])
-    @gossip.destroy
+  def destroy 
+      @gossip = Gossip.find(params[:id])
+      if @gossip.user.id == current_user.id
+        @gossip.destroy
+      end
     redirect_to gossips_path
   end
   
@@ -72,6 +77,3 @@ class GossipsController < ApplicationController
   end
 
 end
-
-
-

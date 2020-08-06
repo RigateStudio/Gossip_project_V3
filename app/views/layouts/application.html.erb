@@ -1,96 +1,87 @@
 <!DOCTYPE html>
 <html>
-
     <head>
-
-      <title>The Gossip PastequeProject</title>
-
+      <title>The Gossip Pasteque Project</title>
       <%= csrf_meta_tags %>
       <%= csp_meta_tag %>
-
+      <!--//  \/ligne bootstrap copier depuis le projet de semaine 1 \/-->
       <link rel="stylesheet" href="/app/stylesheets/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-      <link rel="shortcut icon" type="image/png" href="/app/assets/images/favicon.png">
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
 
-      <%= stylesheet_link_tag 'application', media: 'all' %>
-      <%= javascript_include_tag 'application' %> 
-
-    </head>
-
-    <body> 
-
+      
       <header>
-
-        <nav class="navbar navbar-expand-lg navbar-success bg-light">
-            <img src="https://image.flaticon.com/icons/png/512/123/123250.png" class="img-fluid" alt="Responsive image">
-            
-            <div class="navbar-brand">
-              <%= link_to "The Gossip Project", gossips_path %>
-            </div>
-    
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <nav class="navbar navbar-expand-lg navbar-success bg-light">
+          <img src="https://image.flaticon.com/icons/png/512/123/123250.png" class="img-fluid" alt="Responsive image">
+          
+          <div class="navbar-brand">
+            <%= link_to "The Gossip Project", gossips_path %>
+          </div>
+  
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-          </ul>
+              </button>
+              </ul>
 
-              <div style='display: inline-block; position: relative; float: right;'>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                      
-                  <ul class="navbar-nav mr-auto">
-                        
-                    <li class="nav-item active">
-                      <div class="nav-link">
-                        <%= link_to "Créer un potin", new_gossip_path %>
-                      </div>
-                    </li>
-                        
-                    <li class="nav-item active">
-                     <div class="nav-link"> <%= link_to "Team", team_path %> </div>
-                    </li>
-                        
-                    <li class="nav-item">
-                      <div class="nav-link"> <%= link_to "Contact", contact_path %></div>
-                    </li>
-                      
-                    <!-- <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" data-toggle="dropdown"  role="button" aria-haspopup="true" aria-expanded="false">fichtre</a>
-                          
-                       <% if logged_in?%>
-                          <li class="nav-item">
-                            <%= link_to "Se déconnecter", session_path(session.id), method: :delete %>
-                          </li>
-                       <% else %>
-                         <li class="nav-item">
-                            <%= link_to "Connexion", new_session_path %>
-                          </li>
-                         <li class="nav-item">
-                              <%= link_to "Inscription", new_user_path %>
-                         </li>
-                          <%end%>
-                        </li> -->
+              <ul class="navbar-nav mr-auto">
 
-                        <form class="form-inline my-2 my-lg-0">
-                          <% if logged_in?%>
+              <div class='container-navbar'>
+                <div class='container-left'>
+                  <li class="nav-item active">
+                    <div class="nav-link">
+                      <%= link_to "Créer un potin", new_gossip_path %>
+                    </div>
+                  </li>
+                  
+                  <li class="nav-item active">
+                    <div class="nav-link"> <%= link_to "Team", team_path %> </div>
+                  </li>
+                  
+                  <li class="nav-item">
+                    <div class="nav-link"> <%= link_to "Contact", contact_path %></div>
+                  </li>
+                </div>
+                  
+                  <!--<form class="form-inline my-2 my-lg-0">
+                    <li class="nav-item">
+                      <div class="nav-link"> <%= link_to "Connexion", new_session_path %></div>
+                    </li>
+                          
+                    <li class="nav-item">
+                      <div class="nav-link"> <%= link_to "Inscription", new_user_path %></div>
+                    </li>
+                  </form> -->
+
+                <div class='container-right'>
+                  <form class="form-inline my-2 my-lg-0">
+                    <% if logged_in?%>
                             <li class="nav-item">
-                              <%= link_to "Se déconnecter", session_path(session.id), method: :delete %>
+                              <div class="nav-link"><%= link_to "Se déconnecter", session_path(session.id), method: :delete %></div>
                             </li>
                           <% else %>
                             <li class="nav-item">
-                              <%= link_to "Connexion ", new_session_path %>
+                              <div class="nav-link"><%= link_to "Connexion ", new_session_path %></div>
                             </li>
+
                             <li class="nav-item">
-                              <%= link_to "Inscription", new_user_path %>
+                              <div class="nav-link"><%= link_to "Inscription", new_user_path %></div>
                             </li>
-                          <%end%>
-                        </form>
-
-                    </ul>
-                  </div>
+                    <%end%>
+                  </form>
                 </div>
+                </div>
+                </ul>
+              </div>
 
-          </nav>
+      
+        </nav>
 
-        </header>
+      </header>
+    </head>
+    
+    <body>
       <div class="container p-1">
         <%= yield %>
         </div> 
